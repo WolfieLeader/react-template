@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-textColor: 0 0 0;
+    --color-backgroundColor: 255 255 255;
+    --color-primary: 134 164 234;
+    --color-secondary: 107 206 255;
+    --color-accent: 172 19 184;
+  }
+  :root[data-theme="dark"] {
+    --color-textColor: 255 255 255;
+    --color-backgroundColor: 0 0 0;
+    --color-secondary: 0 25 82;
+    --color-accent: 195 26 213;
+  }
+}
