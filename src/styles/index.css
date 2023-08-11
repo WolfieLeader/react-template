@@ -4,16 +4,16 @@
 
 @layer base {
   :root {
-    --color-textColor: 0 0 0;
-    --color-backgroundColor: 255 255 255;
-    --color-primary: 134 164 234;
-    --color-secondary: 107 206 255;
-    --color-accent: 172 19 184;
+    --color-textColor: 2 6 23;
+    --color-backgroundColor: 226 232 240;
+    --color-primary: 230 57 70;
+    --color-secondary: 69 123 157;
+    --color-accent: 29 53 87;
   }
   :root[data-theme="dark"] {
-    --color-textColor: 255 255 255;
-    --color-backgroundColor: 0 0 0;
-    --color-secondary: 0 25 82;
-    --color-accent: 195 26 213;
+    --color-textColor: 226 232 240;
+    --color-backgroundColor: 15 23 42;
+    --color-secondary: 119 171 189;
+    --color-accent: 69 123 157;
   }
 }
