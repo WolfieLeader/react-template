@@ -9,7 +9,7 @@ export default {
         primary: "rgb(var(--color-primary) / <alpha-value>)",
         secondary: "rgb(var(--color-secondary) / <alpha-value>)",
         accent: "rgb(var(--color-accent) / <alpha-value>)",
-        stones: {
+        river: {
           DEFAULT: "#3c6faf",
           50: "#f3f6fc",
           100: "#e7edf7",
@@ -36,20 +36,6 @@ export default {
           800: "#ae061d",
           900: "#900c1e",
           950: "#4f000b",
-        },
-        ocean: {
-          DEFAULT: "#5862c3",
-          50: "#f2f4fc",
-          100: "#e3e7f6",
-          200: "#cdd5f0",
-          300: "#aab9e6",
-          400: "#8195d9",
-          500: "#6475cd",
-          600: "#5862c3",
-          700: "#464aaf",
-          800: "#3d3f90",
-          900: "#353773",
-          950: "#242447",
         },
         mountains: {
           DEFAULT: "#14b975",
