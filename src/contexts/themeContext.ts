@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 interface IThemeContext {
-  themeMode?: "system" | "light" | "dark";
-  toggleTheme?: () => void;
+  isDarkMode?: boolean;
+  toggleDarkMode?: () => void;
 }
 
 export const themeContext = createContext<IThemeContext>({});

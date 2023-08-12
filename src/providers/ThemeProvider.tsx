@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { themeContext } from "../contexts/themeContext";
 
 interface IThemeProviderProps {
@@ -6,50 +6,20 @@ interface IThemeProviderProps {
 }
 
 const ThemeProvider = ({ children }: IThemeProviderProps) => {
-  const [themeColor, setThemeColor] = useState<"dark" | "light">();
-  const [themeMode, setThemeMode] = useState<"system" | "light" | "dark">();
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // * Set Theme on First Render
-  useLayoutEffect(() => {
+  useEffect(() => {
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const localTheme = localStorage.getItem("theme");
-
-    // If Local Theme Has Manually Been Set
-    if (localTheme === "dark" || localTheme === "light") {
-      setThemeMode(localTheme);
-      setThemeColor(localTheme);
-    } else {
-      setThemeMode("system");
-      setThemeColor(systemTheme);
-    }
+    setIsDarkMode(systemTheme === "dark");
   }, []);
 
-  // * Set Theme on Change
   useEffect(() => {
-    if (themeMode === "dark" || (themeMode === "system" && themeColor === "dark")) {
-      document.documentElement.dataset.theme = "dark";
-    } else {
-      document.documentElement.dataset.theme = "light";
-    }
-  }, [themeColor, themeMode]);
+    document.documentElement.dataset.theme = isDarkMode ? "dark" : "light";
+  }, [isDarkMode]);
 
-  const toggleTheme = () => {
-    if (themeMode === "system") {
-      setThemeMode("dark");
-      setThemeColor("dark");
-      localStorage.setItem("theme", "dark");
-    } else if (themeMode === "dark") {
-      setThemeMode("light");
-      setThemeColor("light");
-      localStorage.setItem("theme", "light");
-    } else if (themeMode === "light") {
-      setThemeMode("system");
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-      setThemeColor(systemTheme);
-      localStorage.setItem("theme", "system");
-    }
-  };
-  return <themeContext.Provider value={{ themeMode, toggleTheme }}>{children}</themeContext.Provider>;
+  const toggleDarkMode = () => setIsDarkMode((prevState) => !prevState);
+
+  return <themeContext.Provider value={{ isDarkMode, toggleDarkMode }}>{children}</themeContext.Provider>;
 };
 
 export default ThemeProvider;

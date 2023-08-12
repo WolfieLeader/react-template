@@ -1,6 +1,13 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Trebuchet MS,
+    Roboto,
+    Ubuntu,
+    sans-serif;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 400;
 
   color-scheme: light dark;
@@ -12,4 +19,35 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
