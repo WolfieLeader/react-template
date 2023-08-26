@@ -3,17 +3,4 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-textColor: 2 6 23;
-    --color-backgroundColor: 226 232 240;
-    --color-primary: 230 57 70;
-    --color-secondary: 69 123 157;
-    --color-accent: 29 53 87;
-  }
-  :root[data-theme="dark"] {
-    --color-textColor: 226 232 240;
-    --color-backgroundColor: 36 36 36;
-    --color-secondary: 119 171 189;
-    --color-accent: 69 123 157;
-  }
 }

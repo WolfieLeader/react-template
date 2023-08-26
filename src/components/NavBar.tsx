@@ -1,22 +1,95 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-const Logo = () => {
+const NavBar = () => {
+  const navLinks = [
+    { title: "Home", href: "/" },
+    { title: "Form", href: "/form" },
+    { title: "Github", href: "https://github.com/WolfieLeader" },
+  ];
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <Link to="/" className="flex items-center">
-      <Icon />
-      <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white hidden sm:block">
-        react-template
-      </span>
-    </Link>
+    <header className="left-0 top-0 z-20 w-full px-2 py-2.5 sm:px-4">
+      <div className="container mx-auto flex flex-wrap items-center justify-between">
+        <NavLink to="/" className="flex items-center">
+          <DeerIcon className="h-14 w-14 pr-2 text-zinc-900" />
+          <span className="self-center whitespace-nowrap text-xl font-semibold text-white">React</span>
+        </NavLink>
+        <div className="flex md:order-2">
+          <button className="mr-3 flex rounded-lg bg-primary-500 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-1 focus:ring-primary-800 md:mr-0">
+            Mode
+          </button>
+          <button
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="inline-flex items-center rounded-lg p-2 text-sm text-zinc-400 hover:bg-zinc-700 focus:outline-none focus:ring-1 focus:ring-zinc-600 md:hidden">
+            <span className="sr-only">Open main menu</span>
+            <BarsIcon />
+          </button>
+        </div>
+        <nav
+          className={`${isMenuOpen ? "block" : "hidden"}
+          w-full items-center justify-between md:order-1 md:flex md:w-auto`}>
+          <Tabs navLinks={navLinks} />
+        </nav>
+      </div>
+    </header>
   );
 };
 
-const Icon = () => {
+export default NavBar;
+
+interface TabsProps {
+  navLinks: {
+    title: string;
+    href: string;
+  }[];
+}
+const Tabs = ({ navLinks }: TabsProps) => {
+  return (
+    <ul className="absolute left-[50%] mt-4 flex w-[95%] -translate-x-[50%] flex-col rounded-lg border border-zinc-700 bg-zinc-800 p-4 md:relative md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-zinc-900 md:text-sm md:font-medium">
+      {navLinks.map(({ title, href }) => {
+        return (
+          <li>
+            <NavLink
+              to={href}
+              className={({ isActive }) => {
+                return `block rounded py-2 pl-3 pr-4 text-base md:p-0 ${
+                  isActive
+                    ? "bg-primary-500 text-white md:bg-transparent md:text-primary-400"
+                    : "text-zinc-400 hover:bg-zinc-700 hover:text-white md:hover:bg-transparent"
+                }`;
+              }}>
+              {title}
+            </NavLink>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
+const BarsIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="w-12 h-12 mr-2 text-backgroundColor"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="h-6 w-6">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+    </svg>
+  );
+};
+
+interface DeerIconProps {
+  className: string;
+}
+const DeerIcon = ({ className }: DeerIconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
       fill="currentColor"
       transform="scale(-1 1)"
       version="1.1"
@@ -41,5 +114,3 @@ const Icon = () => {
     </svg>
   );
 };
-
-export default Logo;
