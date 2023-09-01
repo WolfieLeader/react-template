@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
 
 const NavBar = () => {
   const navLinks = [
@@ -12,7 +13,7 @@ const NavBar = () => {
     <header className="left-0 top-0 z-20 w-full px-2 py-2.5 sm:px-4">
       <div className="container mx-auto flex flex-wrap items-center justify-between">
         <NavLink to="/" className="flex items-center">
-          <DeerIcon className="h-14 w-14 pr-2 text-zinc-900" />
+          <DeerIcon className="h-14 w-14 pr-2 text-primary-950" />
           <span className="self-center whitespace-nowrap text-xl font-semibold text-white">React</span>
         </NavLink>
         <div className="flex md:order-2">
@@ -52,13 +53,13 @@ const Tabs = ({ navLinks }: TabsProps) => {
           <li>
             <NavLink
               to={href}
-              className={({ isActive }) => {
-                return `block rounded py-2 pl-3 pr-4 text-base md:p-0 ${
-                  isActive
-                    ? "bg-primary-500 text-white md:bg-transparent md:text-primary-400"
-                    : "text-zinc-400 hover:bg-zinc-700 hover:text-white md:hover:bg-transparent"
-                }`;
-              }}>
+              className={({ isActive }) =>
+                twMerge(
+                  "block rounded py-2 pl-3 pr-4 text-base text-zinc-400 hover:bg-zinc-700 hover:text-white md:p-0 md:hover:bg-transparent",
+                  isActive &&
+                    "bg-primary text-white hover:bg-primary md:bg-transparent md:text-primary md:hover:text-primary"
+                )
+              }>
               {title}
             </NavLink>
           </li>
