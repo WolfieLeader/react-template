@@ -1,22 +1,29 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        title: ["Sniglet", "sans-serif"],
+      },
       colors: {
-        primary: {
-          DEFAULT: "#3c6faf",
-          50: "#f3f6fc",
-          100: "#e7edf7",
-          200: "#c9d8ee",
-          300: "#99b8e0",
-          400: "#6392cd",
-          500: "#3c6faf",
-          600: "#2e5b9b",
-          700: "#26497e",
-          800: "#233f69",
-          900: "#223758",
-          950: "#17233a",
+        text: {
+          lightMode: "#070A12",
+          darkMode: "#EDF0F8",
+        },
+        background: {
+          lightMode: "#DEE4F2",
+          darkMode: "#0D1321",
+        },
+        primary: "#375eb9",
+        secondary: {
+          lightMode: "#90A5D5",
+          darkMode: "#1C2A4A",
+        },
+        accent: {
+          lightMode: "#385494",
+          darkMode: "#6B87C7",
         },
       },
     },
