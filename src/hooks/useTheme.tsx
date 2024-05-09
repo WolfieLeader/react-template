@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { themeContext } from "../context/themeContext";
+import { useState, useEffect } from "react";
 
-interface ThemeProviderProps {
-  children: React.ReactNode;
-}
-
-const ThemeProvider = ({ children }: ThemeProviderProps) => {
+const useTheme = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     const systemTheme = window.matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light";
-    const localTheme = localStorage.getItem("theme");
+    const localStorageTheme = localStorage.getItem("theme");
 
-    if (localTheme && (localTheme === "dark" || localTheme === "light")) {
-      setTheme(localTheme);
+    if (localStorageTheme === "dark" || localStorageTheme === "light") {
+      setTheme(localStorageTheme);
     } else if (systemTheme) {
       localStorage.setItem("theme", systemTheme);
       setTheme(systemTheme);
@@ -25,7 +20,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   const toggleTheme = () => {
     localStorage.setItem("theme", theme === "light" ? "dark" : "light");
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme((preValue) => (preValue === "light" ? "dark" : "light"));
   };
 
   useEffect(() => {
@@ -36,7 +31,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     }
   }, [theme]);
 
-  return <themeContext.Provider value={{ theme, toggleTheme }}>{children}</themeContext.Provider>;
+  return [theme, toggleTheme] as const;
 };
 
-export default ThemeProvider;
+export default useTheme;
