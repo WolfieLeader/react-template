@@ -14,8 +14,8 @@ export default function App() {
   return (
     <div className="relative w-full h-full min-h-svh max-h-screen text-zinc-900 dark:text-zinc-200">
       <Suspense fallback={<Loading />}>
-        <div className="w-full h-full bg-gradient-to-br from-purple-200 dark:from-blue-950 via-30% dark:via-0% via-blue-200 to-55% to-zinc-200 dark:to-slate-900">
-          <div className="flex flex-col max-w-screen-2xl mx-auto">
+        <div className="w-full h-full">
+          <div className="min-h-full flex flex-col max-w-screen-2xl mx-auto bg-gradient-to-br from-purple-200 dark:from-blue-950 via-30% dark:via-0% via-blue-200 to-55% to-zinc-200 dark:to-slate-900">
             <NavBar />
             <Routes>
               <Route path="/" element={<Home />} />

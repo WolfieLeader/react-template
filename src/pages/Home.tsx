@@ -5,7 +5,7 @@ import { SiEslint, SiPrettier, SiTailwindcss, SiTypescript, SiVite } from "react
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-full h-full max-h-full px-6 sm:px-10 md:px-14 mt-0 sm:mt-10">
+    <div className="flex flex-col w-full h-full max-h-full px-6 sm:px-10 md:px-14 mt-0">
       <Tools />
       <main className="flex flex-col">
         <h1 className="text-4xl xs:text-5xl font-semibold leading-tight dark:text-zinc-50">
@@ -25,7 +25,7 @@ export default function Home() {
         </div>
       </main>
       <Stats />
-      <div className="hidden sm:block w-fit absolute right-0 bottom-0 overflow-hidden">
+      <div className="hidden cube:block w-fit absolute right-0 bottom-0 overflow-hidden">
         <Blocks />
       </div>
     </div>
@@ -33,7 +33,7 @@ export default function Home() {
 }
 function Tools() {
   return (
-    <div className="flex flex-row flex-wrap justify-items-center sm:flex-nowrap sm:justify-start gap-3 md:gap-4 mt-8 mb-4">
+    <div className="flex flex-row flex-wrap justify-items-center sm:flex-nowrap sm:justify-start gap-3 md:gap-4 mt-4 mb-4">
       <Tool title="TypeScript" Icon={SiTypescript} />
       <Tool title="Vite" Icon={SiVite} />
       <Tool title="Tailwind" Icon={SiTailwindcss} />
@@ -54,7 +54,7 @@ function Tool({ title, Icon }: { title: string; Icon: IconType }) {
 
 function Blocks() {
   return (
-    <div className="grid grid-cols-4 gap-1.5 rotate-45 translate-x-48 translate-y-52">
+    <div className="grid grid-cols-4 gap-1.5 rotate-45 translate-x-48 translate-y-44 md:translate-y-80 ">
       <Block className="bg-blue-500" />
       <Block className="bg-slate-900" />
       <Block className="bg-slate-400" />

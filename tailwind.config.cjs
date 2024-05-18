@@ -7,6 +7,7 @@ module.exports = {
       screens: {
         tiny: "375px",
         xs: "480px",
+        cube: { raw: "(min-width: 640px) and (min-height: 560px)" },
       },
     },
   },
